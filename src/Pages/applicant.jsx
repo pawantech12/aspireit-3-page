@@ -18,6 +18,7 @@ const applicant = () => {
   const [searchPhrase, setSearchPhrase] = useState("");
   const [isFocused1, setisFocused1] = useState(false);
   const inputRef = useRef(null);
+  const [isCandidateSelected, setIsCandidateSelected] = useState(false);
 
   const focusInput = () => {
     if (inputRef.current) {
@@ -149,7 +150,7 @@ const applicant = () => {
       </div>
 
       {/*------- Profile Card --------- */}
-      <div className="flex flex-col pt-6 px-24 max-md:px-5">
+      <div className="flex flex-col pt-6 px-24 max-md:px-5 max-w-[1224px] mx-auto">
         <div className="HeaderApplicantResults w-full flex-col justify-start items-start gap-4 inline-flex mx-auto">
           <div className="Profile self-stretch py-6 px-8 bg-white rounded-3xl shadow">
             <div className="gap-6 justify-start items-center inline-flex">
@@ -313,14 +314,30 @@ const applicant = () => {
                   </div>
                 </div>
                 <div className="flex items-end px-7 py-2">
-                  <div className="ButtonsCta py-4 px-9 bg-[#0071db] rounded-[30px] shadow justify-center max-w-[235px] items-center gap-2 inline-flex cursor-pointer">
+                  <div
+                    className="ButtonsCta py-4 px-9 bg-[#0071db] rounded-[30px] shadow justify-center max-w-[235px] items-center gap-2 inline-flex cursor-pointer"
+                    onClick={() => setIsCandidateSelected(!isCandidateSelected)}
+                  >
                     <div className="ButtonLabel text-center inline-flex">
-                      <span className="text-white text-[18px] font-['SF UI  Text'] leading-[18px]">
-                        Finalize&nbsp;
-                      </span>
-                      <span className="text-white text-[18px] font-['SF UI  Text'] leading-[18px]">
-                        Candidate
-                      </span>
+                      {isCandidateSelected ? (
+                        <>
+                          <span className="text-white text-[18px] font-['SF UI  Text'] leading-[18px]">
+                            Schedule&nbsp;
+                          </span>
+                          <span className="text-white text-[18px] font-['SF UI  Text'] leading-[18px]">
+                            Interview
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="text-white text-[18px] font-['SF UI  Text'] leading-[18px]">
+                            Finalize&nbsp;
+                          </span>
+                          <span className="text-white text-[18px] font-['SF UI  Text'] leading-[18px]">
+                            Candidate
+                          </span>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -331,7 +348,7 @@ const applicant = () => {
       </div>
 
       {/* score card */}
-      <div className="grid grid-cols-3 mt-[4vh] justify-between px-[6vw] gap-[2vw]  max-lg:grid-cols-2 max-md:grid-cols-1 max-sm:px-5">
+      <div className="grid grid-cols-3 mt-[4vh] justify-between px-[60px] gap-[2vw]  max-lg:grid-cols-2 max-md:grid-cols-1 max-sm:px-5  max-w-[1224px] mx-auto">
         <div className=" px-7 py-8 bg-white rounded-3xl shadow-[0px_0px_24px_0px_rgba(211,136,255,0.45)] flex-col justify-center items-center gap-9 inline-flex">
           <div className="self-stretch text-center text-[#1e1e1e] text-[24px] font-semibold font-['SF UI  Text'] leading-normal">
             Cummulative Score
@@ -418,7 +435,7 @@ const applicant = () => {
       </div>
 
       {/* AI Interview */}
-      <div className="flex flex-col self-stretch py-[4vh] px-[8vh] max-md:px-10 mt-[4vh] mx-[6vw] max-sm:mx-5 gap-[20px] bg-white rounded-3xl shadow">
+      <div className="flex flex-col  py-[4vh] px-[8vh] max-md:px-10 mt-[4vh] max-sm:mx-5 gap-[20px] bg-white rounded-3xl shadow  max-w-[1224px] mx-auto">
         <div className="flex justify-between max-[500px]:flex-col max-[500px]:gap-3">
           <div className="flex flex-col gap-[6px]">
             <div className="flex flex-col gap-[1vh]">
@@ -617,7 +634,7 @@ const applicant = () => {
       </div>
 
       {/* AI Technical */}
-      <div className="flex flex-col self-stretch py-[4vh] px-[8vh] max-md:px-10 mt-[4vh] mx-[6vw] max-sm:mx-5 gap-[20px] bg-white rounded-3xl shadow">
+      <div className="flex flex-col self-stretch py-[4vh] px-[8vh] max-md:px-10 mt-[4vh]  max-sm:mx-5 gap-[20px] bg-white rounded-3xl shadow  max-w-[1224px] mx-auto">
         <div className="flex justify-between max-[500px]:flex-col max-[500px]:gap-3">
           <div className="flex flex-col gap-[6px]">
             <div className="flex flex-col gap-[1vh]">
@@ -815,7 +832,7 @@ const applicant = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2  py-[4vh]  mt-[1vh] mx-[6vw] gap-[20px] max-lg:grid-cols-1 max-sm:mx-[10px]">
+      <div className="grid grid-cols-2  py-[4vh]  mt-[1vh] gap-[20px] max-lg:grid-cols-1 max-sm:mx-[10px]  max-w-[1224px] mx-auto">
         <SkillSection />
         <RadarChart data={data} labels={labels} />
       </div>

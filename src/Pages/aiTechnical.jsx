@@ -69,6 +69,7 @@ const AiTechnical = () => {
   const [searchPhrase, setSearchPhrase] = useState("");
   const [isFocused1, setisFocused1] = useState(false);
   const inputRef = useRef(null);
+  const [isCandidateSelected, setIsCandidateSelected] = useState(false);
 
   const AssessmentData = [
     [
@@ -250,7 +251,7 @@ const AiTechnical = () => {
       </div>
 
       {/*------- Profile Card --------- */}
-      <div className="flex flex-col pt-6 px-24 max-md:px-5">
+      <div className="flex flex-col pt-6 px-24 max-md:px-5 max-w-[1224px] mx-auto">
         <div className="HeaderApplicantResults w-full flex-col justify-start items-start gap-4 inline-flex mx-auto">
           <div className="Profile self-stretch py-6 px-8 bg-white rounded-3xl shadow">
             <div className="gap-6 justify-start items-center inline-flex">
@@ -411,22 +412,33 @@ const AiTechnical = () => {
                         Photoshop
                       </div>
                     </div>
-                    <div className="px-3 py-2 bg-neutral-100 rounded shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)] border border-[#0072dc] justify-start items-center gap-2 flex">
-                      <div className="text-black text-[16px] font-semibold font-['SF UI  Text'] leading-none">
-                        +more
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div className="flex items-end px-7 py-2">
-                  <div className="ButtonsCta py-4 px-9 bg-[#0071db] rounded-[30px] shadow justify-center max-w-[235px] items-center gap-2 inline-flex cursor-pointer">
+                  <div
+                    className="ButtonsCta py-4 px-9 bg-[#0071db] rounded-[30px] shadow justify-center max-w-[235px] items-center gap-2 inline-flex cursor-pointer"
+                    onClick={() => setIsCandidateSelected(!isCandidateSelected)}
+                  >
                     <div className="ButtonLabel text-center inline-flex">
-                      <span className="text-white text-[18px] font-['SF UI  Text'] leading-[18px]">
-                        Finalize&nbsp;
-                      </span>
-                      <span className="text-white text-[18px] font-['SF UI  Text'] leading-[18px]">
-                        Candidate
-                      </span>
+                      {isCandidateSelected ? (
+                        <>
+                          <span className="text-white text-[18px] font-['SF UI  Text'] leading-[18px]">
+                            Schedule&nbsp;
+                          </span>
+                          <span className="text-white text-[18px] font-['SF UI  Text'] leading-[18px]">
+                            Interview
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="text-white text-[18px] font-['SF UI  Text'] leading-[18px]">
+                            Finalize&nbsp;
+                          </span>
+                          <span className="text-white text-[18px] font-['SF UI  Text'] leading-[18px]">
+                            Candidate
+                          </span>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -438,7 +450,7 @@ const AiTechnical = () => {
 
       {/*------- Center Card --------- */}
 
-      <div className="flex justify-between items-center px-[50px] py-6 mt-[2rem] max-md:px-5">
+      <div className="flex justify-between items-center px-[50px] py-6 mt-[2rem] max-md:px-5 max-w-[1224px] mx-auto">
         <div className="w-full gap-6">
           <div>
             <div className="w-full h-full flex justify-between items-center px-1">
@@ -460,7 +472,7 @@ const AiTechnical = () => {
       </div>
 
       {/*------- Question Card --------- */}
-      <div className="px-[48px] pb-8 mt-[2rem] max-md:px-5">
+      <div className="px-[48px] pb-8 mt-[2rem] max-md:px-5 max-w-[1224px] mx-auto">
         {AssessmentData.map((dataGroup, index) => (
           <div key={index} className="pb-8">
             <div className="flex rounded-[24px] px-[24px] py-[32px] bg-[#FFF] shadow-[0px_0px_4px_0px_#00000040]">
