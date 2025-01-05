@@ -98,9 +98,19 @@ const applicant = () => {
   return (
     <div className="main-container min-h-[100vh] bg-[#F2F2F2] pb-8">
       {/*------- Navbar ----------- */}
-      <div className="NavBar w-full mx-[auto] py-5 max-sm:gap-5  px-8 bg-white border border-[#D2D2D2] backdrop-blur-[220px] flex justify-between items-center hover:cursor-pointer max-sm:flex-col">
-        <div className="logo-container w-[130px]  relative  bg-[#FFF] max-sm:w-full">
-          <img className="Aspireit " src="/Logo.png" />
+      <div className="NavBar w-full mx-[auto] py-2 h-24 max-sm:h-full max-sm:gap-5  px-8 bg-white border border-[#D2D2D2] backdrop-blur-[220px] flex justify-between items-center hover:cursor-pointer max-sm:flex-col ">
+        <div className="logo-container w-[130px] h-[5vh] min-h-[24px] relative  bg-[#FFF]">
+          <div className="Rectangle7391 w-[9vw] h-[4.5vh] min-h-[24px] relative bg-[#0F0F36] rounded-[6px]"></div>
+          <div className="logo w-[9vw] h-[4vh] min-h-[24px] absolute left-[0px] top-[1px] bg-none flex justify-center items-center gap-[0.3vw]">
+            <img
+              className="Aspireit w-[1.5vw] bg-transparent shrink-0"
+              src={image1}
+            />
+            <img
+              className="Group1000007770 bg-transparent w-[5vw] h-[2vh] shrink-0"
+              src={image2}
+            />
+          </div>
         </div>
         <div className="SearchBarContainer w-full flex grow justify-center items-center gap-4 bg-none">
           <div className="InputContainer w-[55%] max-sm:w-full flex justify-start items-center gap-4  pl-6 pr-6 bg-[#F2F2F2] shadow-[0px_0px_4px_rgba(0,_0,_0,_0.25)] rounded-[32px]">
