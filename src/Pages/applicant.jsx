@@ -95,6 +95,22 @@ const applicant = () => {
     [400, 500, 600, 400, 300, 500, 600], // Skill Level 2
   ];
 
+  const scoreCarddata = {
+    cumulativeScore: "86%",
+    rank: [
+      { label: "AI Interview", value: 12, suffix: "th" },
+      { label: "AI Technical", value: 9, suffix: "th" },
+    ],
+    profileMatch: {
+      title: "Profile Match",
+      subtitle: "with job opening",
+      skills: [
+        { name: "Main Skills", score: "82%" },
+        { name: "Sub Skills", score: "68%" },
+      ],
+    },
+  };
+
   return (
     <div className="main-container min-h-[100vh] bg-[#F2F2F2] pb-8">
       {/*------- Navbar ----------- */}
@@ -203,7 +219,7 @@ const applicant = () => {
           <div className="self-stretch grow basis-0 flex-col justify-center items-center flex">
             <div className="justify-start items-start inline-flex">
               <div className="text-center text-[#24df3a] text-[48px] font-semibold font-['SF UI Display'] leading-[48px]">
-                86%
+                {scoreCarddata.cumulativeScore}
               </div>
             </div>
           </div>
@@ -213,70 +229,54 @@ const applicant = () => {
             Rank
           </div>
           <div className="justify-start items-start gap-[20px] inline-flex">
-            <div className="px-2 py-1 justify-center items-center gap-9 flex">
-              <div className="flex-col justify-start items-center gap-6 inline-flex">
-                <div className="flex-col justify-start items-center gap-1 flex">
-                  <img className="w-[130px] h-[130px] relative" src={Rank} />
-                  <div className="justify-center items-end gap-0.5 inline-flex">
-                    <div className="text-center text-[#0f0f36] text-[28px] font-semibold font-['SF UI Display'] leading-7">
-                      12
-                    </div>
-                    <div className="text-center text-[#0f0f36] text-[28px] font-semibold font-['SF UI Display'] leading-7">
-                      th
-                    </div>
-                  </div>
-                </div>
-                <div className="text-center text-[#6f6f6f] text-[18px] font-normal font-['SF UI  Text'] leading-[18px]">
-                  AI Interview
-                </div>
-              </div>
-            </div>
-            <div className="px-2 py-1 justify-center items-center gap-9 flex">
-              <div className="flex-col justify-start items-center gap-6 inline-flex">
-                <div className="flex-col justify-start items-center gap-1 flex">
-                  <img className="w-[130px] h-[130px] relative" src={Rank} />
-                  <div className="justify-center items-end gap-0.5 inline-flex">
-                    <div className="text-center text-[#0f0f36] text-[28px] font-semibold font-['SF UI Display'] leading-7">
-                      9
-                    </div>
-                    <div className="text-center text-[#0f0f36] text-[28px] font-semibold font-['SF UI Display'] leading-7">
-                      th
+            {scoreCarddata.rank.map((item, index) => (
+              <div
+                className="px-2 py-1 justify-center items-center gap-9 flex"
+                key={index}
+              >
+                <div className="flex-col justify-start items-center gap-6 inline-flex">
+                  <div className="flex-col justify-start items-center gap-1 flex">
+                    <img className="w-[130px] h-[130px] relative" src={Rank} />
+                    <div className="justify-center items-end gap-0.5 inline-flex">
+                      <div className="text-center text-[#0f0f36] text-[28px] font-semibold font-['SF UI Display'] leading-7">
+                        {item.value}
+                      </div>
+                      <div className="text-center text-[#0f0f36] text-[28px] font-semibold font-['SF UI Display'] leading-7">
+                        {item.suffix}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="text-center text-[#6f6f6f] text-[18px] font-normal font-['SF UI  Text'] leading-[18px]">
-                  AI Technical
+                  <div className="text-center text-[#6f6f6f] text-[18px] font-normal font-['SF UI  Text'] leading-[18px]">
+                    {item.label}
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
         <div className=" px-10 py-7 bg-white rounded-3xl shadow-[0px_0px_24px_0px_rgba(211,136,255,0.45)] flex-col justify-start items-center gap-[32px] inline-flex">
           <div className="self-stretch h-12 flex-col justify-start items-center gap-2 flex">
             <div className="self-stretch text-center text-[#1e1e1e] text-[24px] font-semibold font-['SF UI  Text'] leading-normal">
-              Profile Match
+              {scoreCarddata.profileMatch.title}
             </div>
             <div className="text-center text-[#6f6f6f] text-[16px] font-normal font-['SF UI  Text'] leading-none">
-              with job opening
+              {scoreCarddata.profileMatch.subtitle}
             </div>
           </div>
           <div className="py-[16px] px-[8px] flex flex-col gap-[24px]">
-            <div className="py-[16px] px-[12px] rounded-[12px] bg-[#F5F5F5] flex items-center gap-[12px]">
-              <span className="text-[24px] font-semibold font-['SF UI Display'] leading-[24px] text-transparent bg-clip-text bg-gradient-text">
-                Main Skills
-              </span>
-              <span className="text-[24px] font-semibold font-['SF UI Display'] leading-[24px] text-transparent bg-clip-text bg-gradient-text">
-                82%
-              </span>
-            </div>
-            <div className="py-[16px] px-[12px] rounded-[12px] bg-[#F5F5F5] flex items-center gap-[12px]">
-              <span className="text-[24px] font-semibold font-['SF UI Display'] leading-[24px] text-transparent bg-clip-text bg-gradient-text">
-                Sub Skills
-              </span>
-              <span className="text-[24px] font-semibold font-['SF UI Display'] leading-[24px] text-transparent bg-clip-text bg-gradient-text">
-                68%
-              </span>
-            </div>
+            {scoreCarddata.profileMatch.skills.map((item, index) => (
+              <div
+                className="py-[16px] px-[12px] rounded-[12px] bg-[#F5F5F5] flex items-center gap-[12px]"
+                key={index}
+              >
+                <span className="text-[24px] font-semibold font-['SF UI Display'] leading-[24px] text-transparent bg-clip-text bg-gradient-text">
+                  {item.name}
+                </span>
+                <span className="text-[24px] font-semibold font-['SF UI Display'] leading-[24px] text-transparent bg-clip-text bg-gradient-text">
+                  {item.score}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -16,13 +16,39 @@ const AiInterview = () => {
   const [searchPhrase, setSearchPhrase] = useState("");
   const [isFocused1, setisFocused1] = useState(false);
   const inputRef = useRef(null);
-  const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isTranscriptVisible, setIsTranscriptVisible] = useState(false);
   const [isCandidateSelected, setIsCandidateSelected] = useState(false);
 
-  const toggleTranscript = () => {
-    setIsTranscriptVisible(!isTranscriptVisible);
+  const [transcriptData, setTranscriptData] = useState(null);
+  const videoRef = useRef();
+
+  const toggleTranscript = async () => {
+    if (!isTranscriptVisible) {
+      // Fetch the transcript dynamically based on the video source
+      const videoSrc = videoRef.current?.src;
+
+      // Mock API call to fetch transcript
+      const fetchedTranscript = await fetchTranscript(videoSrc);
+
+      setTranscriptData(fetchedTranscript);
+    }
+    setIsTranscriptVisible((prev) => !prev);
+  };
+
+  const fetchTranscript = async (videoSrc) => {
+    // Replace this with a real API call
+    return [
+      {
+        time: "00:07",
+        text: "Hello, everyone. Thank you for joining us today.",
+      },
+      {
+        time: "00:15",
+        text: "In this video, we'll cover some exciting topics.",
+      },
+      // Add more transcript data here
+    ];
   };
 
   const handlePlay = () => {
@@ -195,8 +221,6 @@ const AiInterview = () => {
                 AI Interview
               </div>
 
-              {/* Show the icon only when isTranscriptVisible is false */}
-
               <button
                 onClick={toggleTranscript}
                 className="flex justify-center items-center ButtonLabel text-center text-[#0071db] text-[18px] font-semibold font-['SF UI  Text'] leading-[36px] cursor-pointer px-[20px] py-[5px] rounded-[30px] shadow border border-[#0071db]"
@@ -205,13 +229,13 @@ const AiInterview = () => {
               </button>
             </div>
           </div>
-          <div className="flex w-full  p-4  rounded-lg">
+          <div className="flex w-full p-4 rounded-lg">
             <div
-              className={`flex w-full  ${
+              className={`flex w-full ${
                 isTranscriptVisible
                   ? "flex-row justify-between gap-5 max-xl:flex-col"
                   : "justify-center"
-              } `}
+              }`}
             >
               {/* Video Container */}
               <div
@@ -219,71 +243,48 @@ const AiInterview = () => {
                   isTranscriptVisible ? "w-[100%]" : "w-[50%]"
                 }`}
               >
-                {!isPlaying && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-black">
-                    <button
-                      onClick={handlePlay}
-                      className="flex items-center justify-center rounded-full w-36 h-36 bg-black border-4 border-gray-300 shadow-lg hover:opacity-80"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="text-white" // Adjust h-40 to your desired height
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </button>
-                  </div>
-                )}
                 <video
                   ref={videoRef}
-                  className={`w-full h-full rounded-md ${
-                    !isPlaying ? "hidden" : ""
-                  }`}
+                  className="w-full h-full rounded-md"
                   src="https://www.w3schools.com/html/mov_bbb.mp4"
                   controls
                 ></video>
               </div>
+
               {/* Transcript Container */}
               {isTranscriptVisible && (
                 <div className="py-[20px]">
                   <div
-                    className="w-[100%] h-full  rounded-md overflow-auto"
+                    className="w-[100%] h-full rounded-md overflow-auto"
                     style={{ maxHeight: "400px" }}
                   >
-                    <div className="w-full h-full p-[24px] px-[32px] bg-white shadow-[0px_0px_4px_rgba(0,_0,_0,_0.25)] rounded-[24px] border-[0.5px] border-[#464646] flex flex-col justify-start items-start overflow-y-auto gap-[20px]  max-h-[333px]  scrollbar-custom">
-                      {/* Header Section with Title and Close Button */}
+                    <div className="w-full h-full p-[24px] px-[32px] bg-white shadow-[0px_0px_4px_rgba(0,_0,_0,_0.25)] rounded-[24px] border-[0.5px] border-[#464646] flex flex-col justify-start items-start overflow-y-auto gap-[20px] max-h-[333px] scrollbar-custom">
                       <div className="w-full flex justify-between items-center">
                         <div className="text-[#121212] text-[18px] font-[700] leading-[24px] break-words">
                           Transcript
                         </div>
                         <div
                           onClick={toggleTranscript}
-                          className="cursor-pointer hover:scale-110 transition-transform "
+                          className="cursor-pointer hover:scale-110 transition-transform"
                         >
                           <IoClose className="w-7 h-7" />
                         </div>
                       </div>
-
-                      {/* Content Section */}
                       <div className="space-y-3 overflow-auto scrollbar-custom">
-                        <div className="flex gap-2">
-                          <div className="h-full w-[50px] px-2 py-1 bg-gray-100 shadow-sm shadow-purple-300 rounded border border-purple-400 inline-flex justify-start items-center">
-                            <div className="text-black text-[12px] font-sans font-normal leading-[12px] break-words">
-                              00
-                            </div>
-                            <div className="text-black text-[12px] font-sans font-normal leading-[12px] break-words">
-                              :
-                            </div>
-                            <div className="text-black text-[12px] font-sans font-normal leading-[12px] break-words">
-                              07
-                            </div>
-                          </div>
-                          <div className="w-full text-[#1E1E1E] text-[12px] font-sans font-normal leading-[20px] break-words">
-                            Hello, everyone. Thank you for joining us today.
-                          </div>
-                        </div>
+                        {transcriptData
+                          ? transcriptData.map((item, index) => (
+                              <div key={index} className="flex gap-2">
+                                <div className="h-full w-[50px] px-2 py-1 bg-gray-100 shadow-sm shadow-purple-300 rounded border border-purple-400 inline-flex justify-start items-center">
+                                  <div className="text-black text-[12px] font-sans font-normal leading-[12px] break-words">
+                                    {item.time}
+                                  </div>
+                                </div>
+                                <div className="w-full text-[#1E1E1E] text-[12px] font-sans font-normal leading-[20px] break-words">
+                                  {item.text}
+                                </div>
+                              </div>
+                            ))
+                          : "Loading..."}
                       </div>
                     </div>
                   </div>
