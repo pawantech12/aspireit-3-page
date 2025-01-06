@@ -104,12 +104,57 @@ const applicant = () => {
     profileMatch: {
       title: "Profile Match",
       subtitle: "with job opening",
-      skills: [
-        { name: "Main Skills", score: "82%" },
-        { name: "Sub Skills", score: "68%" },
-      ],
+      mainSkills: ["Visual Design", "User Flow"],
+      subSkills: ["Leadership", "Creativity"],
     },
   };
+  const skillsData = [
+    {
+      name: "React",
+      level: {
+        developing: 40,
+        intermediate: 20,
+        advanced: 15,
+        expert: 25,
+      },
+    },
+    {
+      name: "JavaScript",
+      level: {
+        developing: 40,
+        intermediate: 20,
+        advanced: 15,
+        expert: 25,
+      },
+    },
+    {
+      name: "CSS",
+      level: {
+        developing: 40,
+        intermediate: 20,
+        advanced: 15,
+        expert: 25,
+      },
+    },
+    {
+      name: "Node.js",
+      level: {
+        developing: 40,
+        intermediate: 20,
+        advanced: 15,
+        expert: 25,
+      },
+    },
+    {
+      name: "Express",
+      level: {
+        developing: 40,
+        intermediate: 20,
+        advanced: 15,
+        expert: 25,
+      },
+    },
+  ];
 
   return (
     <div className="main-container min-h-[100vh] bg-[#F2F2F2] pb-8">
@@ -226,57 +271,90 @@ const applicant = () => {
         </div>
         <div className=" px-7 py-8 bg-white rounded-3xl shadow-[0px_0px_24px_0px_rgba(211,136,255,0.45)] flex-col  items-center gap-3 inline-flex">
           <div className="self-stretch text-center text-[#1e1e1e] text-[24px] font-semibold font-['SF UI  Text'] leading-normal">
-            Rank
+            {scoreCarddata.rank[0].label} Rank
           </div>
           <div className="justify-start items-start gap-[20px] inline-flex">
-            {scoreCarddata.rank.map((item, index) => (
-              <div
-                className="px-2 py-1 justify-center items-center gap-9 flex"
-                key={index}
-              >
-                <div className="flex-col justify-start items-center gap-6 inline-flex">
-                  <div className="flex-col justify-start items-center gap-1 flex">
-                    <img className="w-[130px] h-[130px] relative" src={Rank} />
-                    <div className="justify-center items-end gap-0.5 inline-flex">
-                      <div className="text-center text-[#0f0f36] text-[28px] font-semibold font-['SF UI Display'] leading-7">
-                        {item.value}
-                      </div>
-                      <div className="text-center text-[#0f0f36] text-[28px] font-semibold font-['SF UI Display'] leading-7">
-                        {item.suffix}
-                      </div>
+            <div className="px-2 py-1 justify-center items-center gap-9 flex">
+              <div className="flex-col justify-start items-center gap-6 inline-flex">
+                <div className="flex justify-start items-center gap-1">
+                  <img className="w-[130px] h-[130px] relative" src={Rank} />
+                  <div className="justify-center items-end gap-0.5 inline-flex">
+                    <div className="text-center text-transparent bg-clip-text bg-gradient-text py-1 text-[32px] font-semibold font-['SF UI Display'] leading-7">
+                      {scoreCarddata.rank[0].value}
                     </div>
-                  </div>
-                  <div className="text-center text-[#6f6f6f] text-[18px] font-normal font-['SF UI  Text'] leading-[18px]">
-                    {item.label}
+                    <div className="text-center  text-transparent bg-clip-text bg-gradient-text py-1 text-[32px] font-semibold font-['SF UI Display'] leading-7">
+                      {scoreCarddata.rank[0].suffix}
+                    </div>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
-        <div className=" px-10 py-7 bg-white rounded-3xl shadow-[0px_0px_24px_0px_rgba(211,136,255,0.45)] flex-col justify-start items-center gap-[32px] inline-flex">
-          <div className="self-stretch h-12 flex-col justify-start items-center gap-2 flex">
-            <div className="self-stretch text-center text-[#1e1e1e] text-[24px] font-semibold font-['SF UI  Text'] leading-normal">
+        <div className=" px-7 py-8 bg-white rounded-3xl shadow-[0px_0px_24px_0px_rgba(211,136,255,0.45)] flex-col  items-center gap-3 inline-flex">
+          <div className="self-stretch text-center text-[#1e1e1e] text-[24px] font-semibold font-['SF UI  Text'] leading-normal">
+            {scoreCarddata.rank[1].label} Rank
+          </div>
+          <div className="justify-start items-start gap-[20px] inline-flex">
+            <div className="px-2 py-1 justify-center items-center gap-9 flex">
+              <div className="flex-col justify-start items-center gap-6 inline-flex">
+                <div className="flex justify-start items-center gap-1">
+                  <img className="w-[130px] h-[130px] relative" src={Rank} />
+                  <div className="justify-center items-end gap-0.5 inline-flex">
+                    <div className="text-center text-transparent bg-clip-text bg-gradient-text py-1 text-[32px] font-semibold font-['SF UI Display'] leading-7">
+                      {scoreCarddata.rank[1].value}
+                    </div>
+                    <div className="text-center  text-transparent bg-clip-text bg-gradient-text py-1 text-[32px] font-semibold font-['SF UI Display'] leading-7">
+                      {scoreCarddata.rank[1].suffix}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="max-sm:px-5  max-w-[1224px] mx-auto px-[60px] my-10">
+        <div className=" px-10 py-7 bg-white rounded-3xl shadow-[0px_0px_24px_0px_rgba(211,136,255,0.45)] flex-col justify-start items-center gap-[16px] ">
+          <div className="self-stretch h-12 flex-col  gap-2 flex">
+            <div className="self-stretch  text-[#1e1e1e] text-[24px] font-semibold font-['SF UI  Text'] leading-normal">
               {scoreCarddata.profileMatch.title}
             </div>
-            <div className="text-center text-[#6f6f6f] text-[16px] font-normal font-['SF UI  Text'] leading-none">
+            <div className=" text-[#6f6f6f] text-[16px] font-normal font-['SF UI  Text'] leading-none">
               {scoreCarddata.profileMatch.subtitle}
             </div>
           </div>
-          <div className="py-[16px] px-[8px] flex flex-col gap-[24px]">
-            {scoreCarddata.profileMatch.skills.map((item, index) => (
-              <div
-                className="py-[16px] px-[12px] rounded-[12px] bg-[#F5F5F5] flex items-center gap-[12px]"
-                key={index}
-              >
-                <span className="text-[24px] font-semibold font-['SF UI Display'] leading-[24px] text-transparent bg-clip-text bg-gradient-text">
-                  {item.name}
-                </span>
-                <span className="text-[24px] font-semibold font-['SF UI Display'] leading-[24px] text-transparent bg-clip-text bg-gradient-text">
-                  {item.score}
-                </span>
+          <div className="py-[16px] px-[8px] flex  gap-[24px] mt-[30px] max-sm:flex-col">
+            <div className="py-[16px] px-[24px] rounded-[12px] shadow-[0px_0px_4px_0px_#00000040] flex flex-col gap-[16px] w-full">
+              <span className="text-[20px] text-[#0072DC] font-semibold font-['SF UI Display'] leading-[24px] ">
+                Main Skills
+              </span>
+              <div className="flex items-center gap-[12px]">
+                {scoreCarddata.profileMatch.mainSkills.map((skill, index) => (
+                  <span
+                    className="text-[12px] font-normal font-['SF UI Display'] leading-[24px] border border-[#0072DC] rounded-full p-[8px] text-[#0072DC] w-fit"
+                    key={index}
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
-            ))}
+            </div>
+            <div className="py-[16px] px-[24px] rounded-[12px] shadow-[0px_0px_4px_0px_#00000040] flex flex-col gap-[16px] w-full">
+              <span className="text-[20px] text-[#55557C] font-semibold font-['SF UI Display'] leading-[24px] ">
+                Sub Skills
+              </span>
+              <div className="flex items-center gap-[12px]">
+                {scoreCarddata.profileMatch.subSkills.map((skill, index) => (
+                  <span
+                    className="text-[12px] font-normal font-['SF UI Display'] leading-[24px] border border-[#7D7DA4] rounded-full p-[8px] text-[#55557C] w-fit"
+                    key={index}
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -356,7 +434,7 @@ const applicant = () => {
               <div className="flex flex-wrap gap-2">
                 {interviewCardData.strengths.map((strength, index) => (
                   <div
-                    className="h-8 w-fit px-[12px] py-[8px] bg-neutral-100 rounded shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)] border border-[#0072dc] justify-start items-center gap-2 inline-flex"
+                    className="h-8 w-fit px-[12px] py-[8px] bg-neutral-100 rounded-full shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)] border-2 border-[#0072dc] justify-start items-center gap-2 inline-flex"
                     key={index}
                   >
                     <div className="text-black text-[16px] font-normal font-['SF UI  Text'] leading-none">
@@ -373,7 +451,7 @@ const applicant = () => {
               <div className="flex flex-wrap gap-2">
                 {interviewCardData.weaknesses.map((weakness, index) => (
                   <div
-                    className="h-8 w-fit px-[12px] py-[8px] bg-neutral-100 rounded shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)] border border-[#0072dc] justify-start items-center gap-2 inline-flex"
+                    className="h-8 w-fit px-[12px] py-[8px] bg-neutral-100 rounded-full shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)] border-2 border-[#C3C3EA] justify-start items-center gap-2 inline-flex"
                     key={index}
                   >
                     <div className="text-black text-[16px] font-normal font-['SF UI  Text'] leading-none">
@@ -392,7 +470,7 @@ const applicant = () => {
               <div className="flex flex-wrap gap-2">
                 {interviewCardData.roleFit.map((role, index) => (
                   <div
-                    className="h-8 w-fit px-[12px] py-[8px] bg-neutral-100 rounded shadow-[0px_0px_4px_0px_#D388FF] border border-[#EA63E7] justify-start items-center gap-2 inline-flex"
+                    className="h-8 w-fit px-[12px] py-[8px] bg-neutral-100 rounded-full shadow-[0px_0px_4px_0px_#D388FF] border-2 border-[#24DF3A] justify-start items-center gap-2 inline-flex"
                     key={index}
                   >
                     <div className="text-black text-[16px] font-normal font-['SF UI  Text'] leading-none">
@@ -530,7 +608,7 @@ const applicant = () => {
               <div className="flex flex-wrap gap-2">
                 {technicalCardData.strengths.map((strength, index) => (
                   <div
-                    className="h-8 w-fit px-[12px] py-[8px] bg-neutral-100 rounded shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)] border border-[#0072dc] justify-start items-center gap-2 inline-flex"
+                    className="h-8 w-fit px-[12px] py-[8px] bg-neutral-100 rounded-full shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)] border-2 border-[#0072DC] justify-start items-center gap-2 inline-flex"
                     key={index}
                   >
                     <div className="text-black text-[16px] font-normal font-['SF UI  Text'] leading-none">
@@ -547,7 +625,7 @@ const applicant = () => {
               <div className="flex flex-wrap gap-2">
                 {technicalCardData.weaknesses.map((weakness, index) => (
                   <div
-                    className="h-8 w-fit px-[12px] py-[8px] bg-neutral-100 rounded shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)] border border-[#0072dc] justify-start items-center gap-2 inline-flex"
+                    className="h-8 w-fit px-[12px] py-[8px] bg-neutral-100 rounded-full shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)] border-2 border-[#C3C3EA] justify-start items-center gap-2 inline-flex"
                     key={index}
                   >
                     <div className="text-black text-[16px] font-normal font-['SF UI  Text'] leading-none">
@@ -566,7 +644,7 @@ const applicant = () => {
               <div className="flex flex-wrap gap-2">
                 {technicalCardData.roleFit.map((roleFit, index) => (
                   <div
-                    className="h-8 w-fit px-[12px] py-[8px] bg-neutral-100 rounded shadow-[0px_0px_4px_0px_#D388FF] border border-[#EA63E7] justify-start items-center gap-2 inline-flex"
+                    className="h-8 w-fit px-[12px] py-[8px] bg-neutral-100 rounded-full shadow-[0px_0px_4px_0px_#D388FF] border-2 border-[#24DF3A] justify-start items-center gap-2 inline-flex"
                     key={index}
                   >
                     <div className="text-black text-[16px] font-normal font-['SF UI  Text'] leading-none">
@@ -630,7 +708,7 @@ const applicant = () => {
       </div>
 
       <div className="grid grid-cols-2  py-[4vh]  mt-[1vh] gap-[20px] max-lg:grid-cols-1 max-sm:mx-[10px]  max-w-[1104px] mx-auto">
-        <SkillSection />
+        <SkillSection skills={skillsData} />
         <RadarChart data={data} labels={labels} />
       </div>
     </div>
